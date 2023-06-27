@@ -35,32 +35,66 @@ function App() {
 ];
 const [randomQuote, setRandomQuote] = useState("");
 const [randomAuthr, setRandomAuthor] = useState("");
+const [divcolor,setdivcolor] = useState("#ffffff");
+const [buttoncolor,setbuttoncolor]= useState("#000000");
+const [bgcolor,setbgcolor]=useState("#007bff");
+const [textColor,setTextcolor]=useState("#000000");
+
 const handleClick=()=>{
   const randIndex=Math.floor(Math.random()*quotes.length);
   const quot=quotes[randIndex].quote
   const author=quotes[randIndex].author
+  const divc=randomColor()
+  const buttonc=randomColor()
+  const bgc=randomColor()
+  const tc=randomColor()
   setRandomQuote(quot)
   setRandomAuthor(author)
+  setdivcolor(divc)
+  setbuttoncolor(buttonc);
+  setbgcolor(bgc)
+  setTextcolor(tc)
+  document.body.style.backgroundColor=tc
 }
-
+const randomColor=()=>{
+  const letters = '0123456789ABCDEF';
+    let color = '#';
+    for (let i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+}
+const outbody={
+  backgroundColor:bgcolor,
+}
+const buttonc={
+  backgroundColor:buttoncolor
+}
+const divcol={
+  backgroundColor:divcolor,
+  Color:textColor
+}
+const txtcolor={
+  textColor:textColor
+}
   return (
     <div>
-    <div id="quote-box" class="container">
+    <div id="quote-box" class="container" style={outbody} >
         <h1>Random Quote Machine</h1>
-        <div id="quote">
+        <div id="quote" style={divcol}>
         {randomQuote ? (
-        <div>{randomQuote}</div>
+        <div style={divcol} >{randomQuote}</div>
       ) : (
         <p id="text">Click the button below to generate a random quote.</p>
       )}
       {randomAuthr?(
-        <p id='author'>-{randomAuthr}</p>
+        <p style={txtcolor} id='author'>-{randomAuthr}</p>
       ):(
         <p id="author"></p>
       )}
         </div>
-        <button id="new-quote" onClick={handleClick}>New Quote</button>
-        <a id="tweet-quote" href="https://twitter.com/intent/tweet">Tweet Quote</a>
+        <button id="new-quote" style={buttonc}  onClick={handleClick}>New Quote</button>
+        <button></button><a id="tweet-quote" href="https://twitter.com/intent/tweet">Tweet Quote</a>
       </div>
       </div>
   );
