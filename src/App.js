@@ -94,7 +94,7 @@ const txtcolor={
       )}
         </div>
         <button id="new-quote" style={buttonc}  onClick={handleClick}>New Quote</button>
-        <button></button><a id="tweet-quote" href="https://twitter.com/intent/tweet">Tweet Quote</a>
+        <a id="tweet-quote" href="https://twitter.com/intent/tweet">Tweet Quote</a>
       </div>
       </div>
   );
